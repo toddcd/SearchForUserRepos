@@ -26,7 +26,7 @@ function displayResults(responseJson, maxResults, login) {
 };
 
 function getNews(query, maxResults=10) {
-
+    $('#js-error-message').text('');
     //const queryString = formatQueryParams(params)
     const url = searchURL + '/users/'+ query +'/repos';
 
@@ -42,6 +42,7 @@ function getNews(query, maxResults=10) {
         .then(responseJson => displayResults(responseJson, maxResults, query))
         .catch(err => {
             $('#js-error-message').text(`Something went wrong: ${err.message}`);
+            $('#results-list').empty();
         });
 }
 
